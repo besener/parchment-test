@@ -2,25 +2,25 @@
   {
     "title": "Welcome to My Parchment",
     "date": "2025-08-21",
-    "file": "welcome.html"
+    "file": "welcome.html",
     "excerpt": "This is my very first post on Parchment! Here I’ll share thoughts, travels, and experiments..."
   },
   {
     "title": "Traveling",
     "date": "2025-08-22",
-    "file": "travel.html"
+    "file": "travel.html",
     "excerpt": "I just returned from my first trip since starting Parchment, and I have so much to share..."
   },
   {
     "title": "Summer",
     "date": "2025-08-22",
-    "file": "summer.html"
+    "file": "summer.html",
     "excerpt": "Sometimes the smallest details inspire the biggest ideas. Summer vibes..."
   },
  {
     "title": "",
     "date": "",
-    "file": ""
-    "excerpt":
+    "file": "",
+    "excerpt": "",
   }
 ]
