@@ -23,27 +23,31 @@
   </footer>
 
   <script>
-    // Load posts from posts.json
-    fetch("posts.json")
-      .then(response => response.json())
-      .then(posts => {
+fetch("posts.json?v=1")
+  .then(response => {
+    if (!response.ok) throw new Error("Could not load posts.json: " + response.status);
+    return response.json();
+  })
+  .then(posts => {
         // Sort newest first
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        const list = document.getElementById("post-list");
-        posts.forEach(post => {
-          const article = document.createElement("article");
-          article.innerHTML = `
-            <h3><a href="posts/${post.file}">${post.title}</a></h3>
-            <p><em>${post.date}</em></p>
-            <p>${post.excerpt} <a href="posts/${post.file}">Read more →</a></p>
-          `;
-          list.appendChild(article);
-        });
-      })
-      .catch(err => {
-        document.getElementById("post-list").innerHTML = "<p>Error loading posts.</p>";
-      });
-  </script>
-</body>
-</html>
+posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+    const list = document.getElementById("post-list");
+    posts.forEach(post => {
+      const article = document.createElement("article");
+      article.innerHTML = `
+        <div class="post-featured">
+          <a href="posts/${post.file}">
+            <img src="${post.image}" alt="${post.title}">
+          </a>
+        </div>
+        <h3><a href="posts/${post.file}">${post.title}</a></h3>
+        <p><em>${post.date}</em></p>
+        <p>${post.excerpt} <a href="posts/${post.file}">Read more →</a></p>
+      `;
+      list.appendChild(article);
+    });
+  })
+  .catch(err => {
+    document.getElementById("post-list").innerHTML = "<p>" + err.message + "</p>";
+  });
+</script>
