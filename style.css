@@ -62,3 +62,13 @@ article p {
   color: #d94f4f;           /* Hover color for links */
   text-decoration: underline; /* Underline on hover */
 }
+
+/* Featured image for posts */
+.post-featured img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
