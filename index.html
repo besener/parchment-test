@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parchment - Another blog</title>
+  <title>Parchment Blog</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Parchment</h1>
-    <p>My blog about baking, travel, and life in/outside academia</p>
+    <p>My blog about baking, travel, and life on the tenure track</p>
   </header>
 
   <main>
@@ -23,17 +23,19 @@
   </footer>
 
   <script>
-fetch("posts.json?v=1")
-  .then(response => {
-    if (!response.ok) throw new Error("Could not load posts.json: " + response.status);
-    return response.json();
-  })
-  .then(posts => {
+    // Load posts from posts.json
+    fetch("posts.json?v=1")
+      .then(response => {
+        if (!response.ok) throw new Error("Could not load posts.json: " + response.status);
+        return response.json();
+      })
+      .then(posts => {
         // Sort newest first
-posts.sort((a,b) => new Date(b.date) - new Date(a.date));
-    const list = document.getElementById("post-list");
-    posts.forEach(post => {
-       // Format date as "Month Day, Year"
+        posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+        const list = document.getElementById("post-list");
+
+        posts.forEach(post => {
+          // Format date as "Month Day, Year"
           const dateObj = new Date(post.date);
           const options = { year: 'numeric', month: 'long', day: 'numeric' };
           const formattedDate = dateObj.toLocaleDateString('en-US', options);
