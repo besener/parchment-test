@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   font-family: Georgia, serif;
   max-width: 800px;
@@ -23,6 +24,11 @@ nav a {
   color: #333;
 }
 
+nav a:hover {
+  color: #2a7ae2; /* Hover color for navigation links */
+}
+
+/* Footer */
 footer {
   text-align: center;
   margin-top: 4rem;
@@ -30,6 +36,7 @@ footer {
   color: #777;
 }
 
+/* Articles / Blog Posts */
 article {
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
@@ -43,4 +50,15 @@ article h3 {
 
 article p {
   margin: 0.5rem 0;
+}
+
+/* Hyperlinks inside posts on index.html */
+#post-list a {
+  color: #333;           /* Link color for posts */
+  text-decoration: none;     /* Remove underline */
+}
+
+#post-list a:hover {
+  color: #d94f4f;           /* Hover color for links */
+  text-decoration: underline; /* Underline on hover */
 }
