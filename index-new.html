@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parchment Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Parchment</h1>
+    <p>My blog about baking, travel, and life in/outside academia</p>
+  </header>
+
+  <main>
+    <h2>Recent Posts</h2>
+    <ul id="post-list"></ul>
+  </main>
+
+  <footer>
+    <p><a href="about.html">About Me</a></p>
+    <p>© 2025 Parchment</p>
+  </footer>
+
+  <script>
+    // Load posts from posts.json and display them
+    fetch("posts.json")
+      .then(response => response.json())
+      .then(posts => {
+        const list = document.getElementById("post-list");
+        posts.forEach(post => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="posts/${post.file}">${post.title}</a> <em>(${post.date})</em>`;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => {
+        document.getElementById("post-list").innerHTML = "<li>Error loading posts.</li>";
+      });
+  </script>
+</body>
+</html>
