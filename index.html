@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>Parchment</h1>
-    <p>My blog about baking, travel, and life in/outside academia</p>
+    <p>My blog about baking, travel, and life on the tenure track</p>
   </header>
 
   <main>
@@ -23,10 +23,13 @@
   </footer>
 
   <script>
-    // Load posts from posts.json and display them
+    // Load posts from posts.json
     fetch("posts.json")
       .then(response => response.json())
       .then(posts => {
+        // Sort posts by date (newest first)
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
         const list = document.getElementById("post-list");
         posts.forEach(post => {
           const li = document.createElement("li");
