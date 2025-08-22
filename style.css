@@ -52,7 +52,7 @@ article p {
   margin: 0.5rem 0;
 }
 
-/* Hyperlinks inside posts on index.html */
+/* Links inside posts on index.html */
 #post-list a {
   color: #333;
   text-decoration: none;
@@ -63,12 +63,23 @@ article p {
   text-decoration: underline;
 }
 
-/* Featured image for posts */
-.post-featured img {
+/* Homepage featured images (cropped) */
+#post-list .post-featured img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Post page images (full original size) */
+.post-featured-post img {
   width: 100%;
   height: auto;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
