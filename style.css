@@ -29,3 +29,18 @@ footer {
   font-size: 0.9rem;
   color: #777;
 }
+
+article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+article h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+article p {
+  margin: 0.5rem 0;
+}
