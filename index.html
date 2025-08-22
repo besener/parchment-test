@@ -33,21 +33,28 @@ fetch("posts.json?v=1")
 posts.sort((a,b) => new Date(b.date) - new Date(a.date));
     const list = document.getElementById("post-list");
     posts.forEach(post => {
-      const article = document.createElement("article");
-      article.innerHTML = `
-        <div class="post-featured">
-          <a href="posts/${post.file}">
-            <img src="${post.image}" alt="${post.title}">
-          </a>
-        </div>
-        <h3><a href="posts/${post.file}">${post.title}</a></h3>
-        <p><em>${post.date}</em></p>
-        <p>${post.excerpt} <a href="posts/${post.file}">Read more →</a></p>
-      `;
-      list.appendChild(article);
-    });
-  })
-  .catch(err => {
-    document.getElementById("post-list").innerHTML = "<p>" + err.message + "</p>";
-  });
-</script>
+       // Format date as "Month Day, Year"
+          const dateObj = new Date(post.date);
+          const options = { year: 'numeric', month: 'long', day: 'numeric' };
+          const formattedDate = dateObj.toLocaleDateString('en-US', options);
+
+          const article = document.createElement("article");
+          article.innerHTML = `
+            <div class="post-featured">
+              <a href="posts/${post.file}">
+                <img src="${post.image}" alt="${post.title}">
+              </a>
+            </div>
+            <h3><a href="posts/${post.file}">${post.title}</a></h3>
+            <p><em>${formattedDate}</em></p>
+            <p>${post.excerpt} <a href="posts/${post.file}">Read more →</a></p>
+          `;
+          list.appendChild(article);
+        });
+      })
+      .catch(err => {
+        document.getElementById("post-list").innerHTML = "<p>" + err.message + "</p>";
+      });
+  </script>
+</body>
+</html>
