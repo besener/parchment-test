@@ -16,5 +16,47 @@
     "date": "2025-08-22",
     "file": "summer.html",
     "excerpt": "Sometimes the smallest details inspire the biggest ideas. Summer vibes..."
+  },
+  {
+    "title": "New Post 1",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-1.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 2",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-2.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 3",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-3.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 4",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-4.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 5",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-5.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 6",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-6.html",
+    "excerpt": "Short summary or excerpt of the new post..."
+  },
+  {
+    "title": "New Post 7",
+    "date": "YYYY-MM-DD",
+    "file": "new-post-7.html",
+    "excerpt": "Short summary or excerpt of the new post..."
   }
 ]
