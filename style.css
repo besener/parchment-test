@@ -18,6 +18,7 @@ h1 {
   font-size: 2.5rem;
 }
 
+/* Navigation link without underline */
 nav a {
   margin: 0 10px;
   text-decoration: none;
@@ -25,13 +26,14 @@ nav a {
 }
 
 nav a:hover {
+  text-decoration: underline; /* Optional: still show underline on hover */
   color: #2a7ae2;
 }
 
 /* Footer link without underline */
 footer a {
   text-decoration: none;
-  color: #2a7ae2; /* Optional: keep the same color as other links */
+  color: #333; /* Optional: keep the same color as other links */
 }
 
 footer a:hover {
