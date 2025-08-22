@@ -25,7 +25,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #2a7ae2; /* Hover color for navigation links */
+  color: #2a7ae2;
 }
 
 /* Footer */
@@ -54,13 +54,13 @@ article p {
 
 /* Hyperlinks inside posts on index.html */
 #post-list a {
-  color: #333;           /* Link color for posts */
-  text-decoration: none;     /* Remove underline */
+  color: #333;
+  text-decoration: none;
 }
 
 #post-list a:hover {
-  color: #d94f4f;           /* Hover color for links */
-  text-decoration: underline; /* Underline on hover */
+  color: #d94f4f;
+  text-decoration: underline;
 }
 
 /* Featured image for posts */
