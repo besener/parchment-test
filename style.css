@@ -28,6 +28,16 @@ nav a:hover {
   color: #2a7ae2;
 }
 
+/* Footer link without underline */
+footer a {
+  text-decoration: none;
+  color: #2a7ae2; /* Optional: keep the same color as other links */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Optional: still show underline on hover */
+}
+
 /* Footer */
 footer {
   text-align: center;
