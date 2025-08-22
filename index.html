@@ -14,11 +14,11 @@
 
   <main>
     <h2>Recent Posts</h2>
-    <ul id="post-list"></ul>
+    <div id="post-list"></div>
   </main>
 
   <footer>
-    <p></nav><a href="about.html">About Me</a></nav></p>
+    <p><a href="about.html">About Me</a></p>
     <p>© 2025 Parchment</p>
   </footer>
 
@@ -27,18 +27,22 @@
     fetch("posts.json")
       .then(response => response.json())
       .then(posts => {
-        // Sort posts by date (newest first)
+        // Sort newest first
         posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         const list = document.getElementById("post-list");
         posts.forEach(post => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="posts/${post.file}">${post.title}</a> <em>(${post.date})</em>`;
-          list.appendChild(li);
+          const article = document.createElement("article");
+          article.innerHTML = `
+            <h3><a href="posts/${post.file}">${post.title}</a></h3>
+            <p><em>${post.date}</em></p>
+            <p>${post.excerpt} <a href="posts/${post.file}">Read more →</a></p>
+          `;
+          list.appendChild(article);
         });
       })
       .catch(err => {
-        document.getElementById("post-list").innerHTML = "<li>Error loading posts.</li>";
+        document.getElementById("post-list").innerHTML = "<p>Error loading posts.</p>";
       });
   </script>
 </body>
