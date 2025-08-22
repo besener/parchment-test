@@ -1,19 +1,22 @@
-#Instead of editing index.html each time, you update this one file.#
-
 [
   {
-    "title": "Welcome to My Blog",
+    "title": "Welcome to My Parchment",
     "date": "2025-08-21",
     "file": "welcome.html"
   },
   {
-    "title": "First Travel Story",
+    "title": "Traveling",
     "date": "2025-08-22",
     "file": "travel.html"
   },
   {
-    "title": "Another Post",
+    "title": "Summer",
     "date": "2025-08-22",
     "file": "summer.html"
+  }
+ {
+    "title": "",
+    "date": "",
+    "file": ""
   }
 ]
