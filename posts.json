@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Welcome to My Blog",
+    "date": "2025-08-21",
+    "file": "welcome.html"
+  },
+  {
+    "title": "First Travel Story",
+    "date": "2025-08-22",
+    "file": "travel.html"
+  },
+  {
+    "title": "Another Post",
+    "date": "2025-08-22",
+    "file": "summer.html"
+  }
+]
