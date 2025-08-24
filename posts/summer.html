@@ -59,13 +59,18 @@
        =========================== -->
   <script>
     // ===========================
-    // 1. Get page number from URL query string
+    // 1. Get page number
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || 1;
+    let page = urlParams.get('page');
+
+    // If no ?page= in URL, fallback to {{PAGE}} placeholder
+    if (!page) {
+      page = '{{PAGE}}'; // pre-filled when generating HTML
+    }
 
     // ===========================
-    // 2. Update all back links with current page number
+    // 2. Update all back links
     // ===========================
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
@@ -74,8 +79,7 @@
     });
 
     // ===========================
-    // 3. Display timezone-safe post date
-    //    Parses {{DATE}} placeholder from server or generator
+    // 3. Timezone-safe date
     // ===========================
     const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
     if(postDateStr) {
