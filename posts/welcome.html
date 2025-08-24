@@ -9,11 +9,15 @@
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body>
+
+<!-- Embed page number for back links -->
+<body data-page="1">
+
+  <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Back link will be updated dynamically by JS -->
+      <!-- Top back link -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
@@ -64,41 +68,34 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- ===========================
-       JavaScript Section
-       =========================== -->
+  <!-- JavaScript -->
   <script>
-    // ===========================
-    // 1. Determine page number for back links
-    // ===========================
+    // ---------------------------
+    // 1. Determine current page
+    // ---------------------------
     const urlParams = new URLSearchParams(window.location.search);
-
-    // Use ?page= if present, else fallback to data-page attribute, else default 1
     const page = urlParams.get('page') || document.body.dataset.page || 1;
 
-    // ===========================
-    // 2. Update all back links dynamically
-    // ===========================
+    // ---------------------------
+    // 2. Update back links
+    // ---------------------------
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // ===========================
-    // 3. Timezone-safe date display
-    //    {{DATE}} placeholder format: "YYYY-MM-DD"
-    // ===========================
-    const postDateStr = '{{DATE}}';
-    if(postDateStr) {
-      const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // month is 0-indexed
-      document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
+    // ---------------------------
+    // 3. Display post date safely
+    // ---------------------------
+    const postDateStr = '2025-08-20'; // replace with {{DATE}} if generating dynamically
+    const [year, month, day] = postDateStr.split('-').map(Number);
+    const dateObj = new Date(year, month-1, day);
+    document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   </script>
 </body>
 </html>
