@@ -1,19 +1,20 @@
+<!-- Use template.html as base, replace {{TITLE}}, {{DATE}}, {{IMAGE}}, {{CONTENT}} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Parchment</title>
+  <title>Welcome to My Parchment - Parchment</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <h1>Parchment</h1>
-    <nav><a href="../index.html">Home</a></nav>
+    <nav><a id="back-link" href="../index.html">← Back</a></nav>
   </header>
 
   <main>
-    <!-- Featured Image -->
     <div class="post-featured-post">
       <img src="images/welcome.jpg" alt="Welcome to My Parchment">
     </div>
@@ -21,7 +22,6 @@
     <article>
       <h2>Welcome to My Parchment</h2>
       <p><em>August 21, 2025</em></p>
-
       <p>This is my very first post on <strong>Parchment</strong>! I’ll share thoughts, travels, and experiments from my life inside and outside academia.</p>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis eros ut velit lacinia convallis. Orci varius natoque penatibus et magnis dis 
@@ -37,7 +37,19 @@
   </main>
 
   <footer>
+    <p>
+      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+    </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <script>
+    // Back-link to correct index page
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('page') || 1;
+    document.getElementById('back-link').href = `../index.html?page=${page}`;
+  </script>
 </body>
 </html>
