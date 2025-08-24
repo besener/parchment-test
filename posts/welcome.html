@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} - Parchment</title>
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+  <header>
+    <h1>Parchment</h1>
+    <nav><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></nav>
+  </header>
+
+  <main>
+    <div class="post-featured-post">
+      <img src="images/{{IMAGE}}" alt="{{TITLE}}">
+    </div>
 
     <article>
       <p>This is my very first post on <strong>Parchment</strong>! I’ll share thoughts, travels, and experiments from my life inside and outside academia.</p>
@@ -15,4 +34,27 @@
       interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
 
+    <p><a href="../index.html?page={{PAGE}}" class="back-link">← Back to page {{PAGE}}</a></p>
+  </main>
+
+  <footer>
+    <p>
+      <a href="../about.html">About Me</a> |
+
+      <!-- Social icons wrapped -->
+      <span class="social-icons">
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-flickr"></i>
+        </a>
+      </span>
+    </p>
+    <p>© 2025 Parchment</p>
+  </footer>
+</body>
 </html>
