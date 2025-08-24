@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parchment Blog</title>
 
-  <!-- Global stylesheet -->
+  <!-- Link to global stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Font Awesome for social icons -->
+  <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
@@ -21,7 +21,7 @@
   </header>
 
   <!-- ===========================
-       Main Content
+       Main Blog Content
        =========================== -->
   <main>
     <h2>Recent Posts</h2>
@@ -36,7 +36,7 @@
   </main>
 
   <!-- ===========================
-       Footer
+       Footer Section
        =========================== -->
   <footer>
     <p>
@@ -57,58 +57,59 @@
   </footer>
 
   <!-- ===========================
-       JavaScript: Dynamic Pagination
+       JavaScript Section
+       Handles pagination and dynamic back links
        =========================== -->
   <script>
-    const POSTS_PER_PAGE = 5; // How many posts per page
-    let currentPage = 1;
+    const POSTS_PER_PAGE = 5;
     let posts = [];
+    let currentPage = 1;
 
+    // DOM elements
     const postList = document.getElementById('post-list');
     const prevBtn = document.getElementById('prev-page');
     const nextBtn = document.getElementById('next-page');
     const pageInfo = document.getElementById('page-info');
 
     // ===========================
-    // Get current page from URL ?page= parameter
-    // Defaults to 1
+    // 1. Determine current page from URL
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
-    currentPage = parseInt(urlParams.get('page')) || 1;
+    const pageFromURL = parseInt(urlParams.get('page'));
+    if (!isNaN(pageFromURL) && pageFromURL > 0) currentPage = pageFromURL;
 
     // ===========================
-    // Load posts.json
+    // 2. Load posts.json and render
     // ===========================
     fetch("posts.json")
       .then(res => res.json())
       .then(data => {
-        // Sort posts by date descending
+        // Sort posts newest first
         posts = data.sort((a,b) => new Date(b.date) - new Date(a.date));
+
+        // Render current page
         renderPage();
       })
       .catch(err => postList.innerHTML = `<p>Error loading posts: ${err}</p>`);
 
     // ===========================
-    // Render a page of posts
+    // 3. Render a page of posts
     // ===========================
     function renderPage() {
       postList.innerHTML = '';
 
+      // Calculate slice indices
       const start = (currentPage - 1) * POSTS_PER_PAGE;
       const end = start + POSTS_PER_PAGE;
       const pagePosts = posts.slice(start, end);
 
-      pagePosts.forEach(post => {
-        // Calculate the page number for this post dynamically
+      pagePosts.forEach((post, index) => {
+        const dateObj = new Date(post.date);
+        const formattedDate = dateObj.toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+
+        // Calculate the post's page number dynamically
         const postIndex = posts.findIndex(p => p.file === post.file);
         const postPage = Math.floor(postIndex / POSTS_PER_PAGE) + 1;
-
-        const dateObj = new Date(post.date);
-        const formattedDate = dateObj.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
 
         const article = document.createElement('article');
         article.innerHTML = `
@@ -132,14 +133,14 @@
     }
 
     // ===========================
-    // Pagination button events
+    // 4. Pagination button events
     // ===========================
     prevBtn.addEventListener('click', () => {
       if (currentPage > 1) {
         currentPage--;
         renderPage();
-        window.scrollTo(0,0);
-        history.replaceState(null,null,`?page=${currentPage}`);
+        window.scrollTo(0, 0);
+        updateURL();
       }
     });
 
@@ -148,10 +149,18 @@
       if (currentPage < totalPages) {
         currentPage++;
         renderPage();
-        window.scrollTo(0,0);
-        history.replaceState(null,null,`?page=${currentPage}`);
+        window.scrollTo(0, 0);
+        updateURL();
       }
     });
+
+    // ===========================
+    // 5. Update URL without reloading page
+    // ===========================
+    function updateURL() {
+      const newURL = `${window.location.pathname}?page=${currentPage}`;
+      window.history.replaceState({}, '', newURL);
+    }
   </script>
 </body>
 </html>
