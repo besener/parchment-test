@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Parchment Post</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
 
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>Parchment</h1>
-    <nav><a id="back-link" href="../index.html">← Back to Page</a></nav>
+    <nav>
+      <!-- Back to page link is updated dynamically by JS -->
+      <a id="back-link" href="../index.html">← Back to Page</a>
+    </nav>
   </header>
 
+  <!-- Main content -->
   <main>
     <div class="post-featured-post">
       <img id="post-image" src="" alt="">
@@ -25,12 +31,14 @@
       <p id="post-content"></p>
     </article>
 
+    <!-- Duplicate back link at bottom -->
     <p><a id="back-link-bottom" href="../index.html" class="back-link">← Back to Page</a></p>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>
-      <a href="../about.html">About Me</a> |
+      <a href="about.html">About Me</a> |
       <span class="social-icons">
         <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
         <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
@@ -40,39 +48,48 @@
     <p>© 2025 Parchment</p>
   </footer>
 
+  <!-- JavaScript to load post dynamically -->
   <script>
     const POSTS_PER_PAGE = 5;
 
-    function getQueryParam(name){
+    // Get URL parameter (?post=filename.html)
+    function getQueryParam(name) {
       const params = new URLSearchParams(window.location.search);
       return params.get(name);
     }
 
     const postFile = getQueryParam('post');
 
-    if (!postFile){
+    if (!postFile) {
       document.querySelector('main').innerHTML = "<p>No post specified.</p>";
     } else {
-      fetch("../posts.json")
+      // Load all posts
+      fetch("posts.json")
         .then(res => res.json())
         .then(posts => {
+          // Sort newest first
           posts.sort((a,b) => new Date(b.date) - new Date(a.date));
           const postIndex = posts.findIndex(p => p.file === postFile);
+
           if(postIndex === -1){
             document.querySelector('main').innerHTML = "<p>Post not found.</p>";
             return;
           }
 
           const post = posts[postIndex];
+
+          // Fill post content
           document.getElementById('page-title').textContent = `${post.title} - Parchment`;
           document.getElementById('post-title').textContent = post.title;
-          document.getElementById('post-date').textContent = new Date(post.date).toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+          document.getElementById('post-date').textContent = new Date(post.date)
+            .toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
           document.getElementById('post-content').innerHTML = post.content || post.excerpt;
-          document.getElementById('post-image').src = `images/${post.image.split('/').pop()}`;
+          document.getElementById('post-image').src = post.image;
           document.getElementById('post-image').alt = post.title;
 
+          // Compute back page
           const pageNum = Math.floor(postIndex / POSTS_PER_PAGE) + 1;
-          const backLink = `../index.html?page=${pageNum}`;
+          const backLink = `index.html?page=${pageNum}`;
           document.getElementById('back-link').href = backLink;
           document.getElementById('back-link').textContent = `← Back to Page ${pageNum}`;
           document.getElementById('back-link-bottom').href = backLink;
