@@ -2,18 +2,18 @@
    Base Styles
    ============================== */
 body {
-  font-family: Georgia, serif;           /* Elegant serif for blog readability */
-  max-width: 800px;                      /* Constrains width for better line length */
-  margin: 2rem auto;                     /* Centers the content vertically & horizontally */
+  font-family: Georgia, serif;           /* Elegant serif for readability */
+  max-width: 800px;                      /* Constrain width for comfortable reading */
+  margin: 2rem auto;                     /* Center content vertically & horizontally */
   padding: 1rem;                         /* Inner padding for breathing room */
-  line-height: 1.6;                      /* Comfortable reading line height */
+  line-height: 1.6;                      /* Comfortable line height */
   background: #fdfcf7;                   /* Soft parchment-like background */
-  color: #333;                           /* Dark grey text for readability */
+  color: #333;                           /* Dark grey text for contrast */
 }
 
 header {
-  text-align: center;                    /* Centers blog title & description */
-  margin-bottom: 2rem;                   /* Space between header and main content */
+  text-align: center;                    /* Center blog title & description */
+  margin-bottom: 2rem;                   /* Space between header and content */
 }
 
 h1 {
@@ -27,11 +27,11 @@ h1 {
 nav a {
   margin: 0 10px;                        /* Horizontal spacing between nav links */
   text-decoration: none;                  /* Remove underline initially */
-  color: #333;                            /* Dark text color for links */
+  color: #333;                            /* Dark link color */
 }
 
 nav a:hover {
-  color: #5f6db3;                        /* Blue hover color for interactivity */
+  color: #5f6db3;                        /* Blue hover for interactivity */
   text-decoration: underline;             /* Underline appears on hover */
 }
 
@@ -46,14 +46,19 @@ footer {
 }
 
 footer a {
-  text-decoration: none;                  /* Normal links have no underline */
+  text-decoration: none;                  /* Remove underline on normal links */
   color: #333;
   margin: 0 0.3rem;                       /* Small spacing between footer links */
 }
 
 footer a:hover {
-  color: #5f6db3;                        /* Hover color */
-  text-decoration: underline;             /* Text link underline appears on hover */
+  color: #5f6db3;                         /* Hover color */
+  text-decoration: underline;             /* Text links underline on hover */
+}
+
+/* Optional: spacing for first footer link (About Me) */
+footer p a:first-child {
+  margin-right: 0.6rem;
 }
 
 /* ==============================
@@ -61,27 +66,22 @@ footer a:hover {
    ============================== */
 .social-icons a {
   text-decoration: none;                  /* Remove default underline */
-  margin: 0 8px;                          /* Horizontal spacing between icons */
+  margin: 0 8px;                          /* Space between icons */
   color: #333;                             /* Default icon color */
   font-size: 1.2rem;                       /* Slightly larger than normal text */
-  transition: color 0.2s ease-in-out;      /* Smooth color transition on hover */
+  transition: color 0.2s ease-in-out;      /* Smooth color change on hover */
 }
 
 .social-icons a:hover {
-  color: #5f6db3;                        /* Only icon color changes on hover */
-  text-decoration: none;                   /* Ensures icons never get underlined */
+  color: #5f6db3;                        /* Only icon color changes */
+  text-decoration: none;                  /* Ensure icons never underlined */
 }
 
 .social-icons i {
-  font-family: "Font Awesome 6 Brands";   /* Ensures brand icons display correctly */
+  font-family: "Font Awesome 6 Brands";   /* Ensure brand icons display correctly */
   font-style: normal;
   font-weight: normal;
   vertical-align: middle;                 /* Align icons with text baseline */
-}
-
-/* Optional spacing for About Me text */
-footer p a:first-child {
-  margin-right: 0.6rem;
 }
 
 /* ==============================
@@ -89,21 +89,29 @@ footer p a:first-child {
    ============================== */
 article {
   margin-bottom: 2.5rem;                  /* Space between posts */
-  padding-bottom: 1rem;                   /* Space inside article bottom */
-  border-bottom: 1px solid #ddd;          /* Subtle separator line between posts */
+  padding-bottom: 1rem;                   /* Inner bottom padding */
+  border-bottom: 1px solid #ddd;          /* Subtle separator between posts */
+}
+
+article h2, article h3 {
+  margin: 0;
+}
+
+article h2 {
+  font-size: 1.8rem;                      /* Full post page title */
 }
 
 article h3 {
-  margin: 0;
-  font-size: 1.5rem;                      /* Post title size */
+  font-size: 1.5rem;                      /* Homepage post preview title */
 }
 
 article p {
   margin: 0.5rem 0;                        /* Paragraph spacing */
 }
 
+/* Links inside post previews */
 #post-list a {
-  color: #333;                             /* Links inside post previews */
+  color: #333;
   text-decoration: none;
 }
 
@@ -115,15 +123,15 @@ article p {
 /* ==============================
    Featured Images
    ============================== */
-/* Homepage cropped images */
+/* Homepage cropped thumbnails */
 #post-list .post-featured img {
-  width: 100%;                             /* Full width of container */
-  height: 250px;                            /* Fixed height for homepage thumbnails */
-  object-fit: cover;                        /* Crop images without distortion */
+  width: 100%;
+  height: 250px;
+  object-fit: cover;                       /* Crop without distortion */
   display: block;
   margin-bottom: 0.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);    /* Soft shadow for depth */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Soft shadow for depth */
 }
 
 /* Full post page images */
@@ -141,7 +149,7 @@ article p {
    ============================== */
 #pagination {
   text-align: center;
-  margin-top: 2rem;                        /* Space above pagination */
+  margin-top: 2rem;                        /* Space above pagination buttons */
 }
 
 #pagination button {
