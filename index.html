@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parchment Blog</title>
-
-  <!-- Link to stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Font Awesome icons -->
-  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <!-- Header -->
@@ -18,12 +16,12 @@
     <p>My blog about baking, travel, and life in/outside academia</p>
   </header>
 
-  <!-- Main content -->
+  <!-- Main Content -->
   <main>
     <h2>Recent Posts</h2>
     <div id="post-list"></div>
 
-    <!-- Pagination controls -->
+    <!-- Pagination -->
     <div id="pagination">
       <button id="prev-page" disabled>← Previous</button>
       <span id="page-info">Page 1</span>
@@ -31,18 +29,18 @@
     </div>
   </main>
 
-  <!-- Footer with social links -->
+  <!-- Footer with social icons -->
   <footer>
-    <p><a href="about.html">About Me</a></p>
     <p>
-      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+      <a href="about.html">About Me</a> |
+      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://flickr.com/yourusername" target="_blank"><i class="fab fa-flickr"></i> Flickr</a>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JS: Fetch posts and handle pagination -->
+  <!-- JavaScript for pagination and linking posts -->
   <script>
     const POSTS_PER_PAGE = 10;
     let currentPage = 1;
@@ -53,28 +51,30 @@
     const nextBtn = document.getElementById('next-page');
     const pageInfo = document.getElementById('page-info');
 
-    // Load posts.json
-    fetch("posts.json")
-      .then(res => res.json())
+    // Load posts from JSON
+    fetch("posts.json?v=1")
+      .then(res => res.ok ? res.json() : Promise.reject(res.status))
       .then(data => {
-        posts = data.sort((a,b)=>new Date(b.date)-new Date(a.date));
+        posts = data.sort((a,b)=> new Date(b.date)-new Date(a.date));
         renderPage();
-      });
+      })
+      .catch(err => postList.innerHTML = `<p>Error loading posts: ${err}</p>`);
 
     function renderPage() {
       postList.innerHTML = '';
       const start = (currentPage-1)*POSTS_PER_PAGE;
-      const end = start+POSTS_PER_PAGE;
-      const pagePosts = posts.slice(start,end);
+      const end = start + POSTS_PER_PAGE;
+      const pagePosts = posts.slice(start, end);
 
-      pagePosts.forEach(post=>{
+      pagePosts.forEach(post => {
         const dateObj = new Date(post.date);
-        const formattedDate = dateObj.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        const formattedDate = dateObj.toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
         const article = document.createElement('article');
+
         article.innerHTML = `
           <div class="post-featured">
             <a href="posts/${post.file}?page=${currentPage}">
-              <img src="${post.image}" alt="${post.title}">
+              <img src="posts/images/${post.image}" alt="${post.title}">
             </a>
           </div>
           <h3><a href="posts/${post.file}?page=${currentPage}">${post.title}</a></h3>
@@ -86,17 +86,12 @@
 
       const totalPages = Math.ceil(posts.length/POSTS_PER_PAGE);
       pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-      prevBtn.disabled = currentPage === 1;
-      nextBtn.disabled = currentPage === totalPages;
+      prevBtn.disabled = currentPage===1;
+      nextBtn.disabled = currentPage===totalPages;
     }
 
-    prevBtn.addEventListener('click', ()=>{
-      if(currentPage>1){currentPage--; renderPage(); window.scrollTo(0,0);}
-    });
-    nextBtn.addEventListener('click', ()=>{
-      const totalPages = Math.ceil(posts.length/POSTS_PER_PAGE);
-      if(currentPage<totalPages){currentPage++; renderPage(); window.scrollTo(0,0);}
-    });
+    prevBtn.addEventListener('click', ()=> { if(currentPage>1){currentPage--; renderPage(); window.scrollTo(0,0);} });
+    nextBtn.addEventListener('click', ()=> { const totalPages=Math.ceil(posts.length/POSTS_PER_PAGE); if(currentPage<totalPages){currentPage++; renderPage(); window.scrollTo(0,0);} });
   </script>
 </body>
 </html>
