@@ -61,21 +61,27 @@ footer a:hover {
 /* ==============================
    Social Icon Styling
    ============================== */
-/* Ensures Font Awesome icons always display correctly */
-footer a i {
-  font-family: "Font Awesome 6 Brands"; /* Force brands font */
-  font-style: normal; /* Reset italic */
-  font-weight: normal; /* Reset bold */
+/* Wrap social links inside .social-icons container */
+.social-icons a {
+  text-decoration: none;   /* remove underline always */
+  margin: 0 8px;
+  color: #333;             /* default icon/link color */
   font-size: 1.2rem;
-  vertical-align: middle;
-  color: #333;
   transition: color 0.2s ease-in-out;
 }
 
-/* Social icon hover effect */
-footer a i:hover {
+/* Social icons on hover: only color changes */
+.social-icons a:hover {
   color: #5f6db3;
-  text-decoration: none;
+  text-decoration: none;   /* prevent underline on hover */
+}
+
+/* Ensures Font Awesome icons always display correctly */
+.social-icons i {
+  font-family: "Font Awesome 6 Brands"; /* Force brand icons */
+  font-style: normal;
+  font-weight: normal;
+  vertical-align: middle;
 }
 
 /* Optional: space between About Me text and social icons */
