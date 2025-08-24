@@ -1,4 +1,6 @@
-/* Base Styles */
+/* ==============================
+   Base Styles
+   ============================== */
 body {
   font-family: Georgia, serif;
   max-width: 800px;
@@ -16,9 +18,12 @@ header {
 
 h1 {
   font-size: 2.5rem;
+  margin-bottom: 0.2rem;
 }
 
-/* Navigation link without underline */
+/* ==============================
+   Navigation Links
+   ============================== */
 nav a {
   margin: 0 10px;
   text-decoration: none;
@@ -27,21 +32,12 @@ nav a {
 
 nav a:hover {
   color: #5f6db3;
-  text-decoration: underline; /* Optional: still show underline on hover */
+  text-decoration: underline;
 }
 
-/* Footer link without underline */
-footer a {
-  text-decoration: none;
-  color: #333; /* Optional: keep the same color as other links */
-}
-
-footer a:hover {
-  color: #5f6db3;
-  text-decoration: underline; /* Optional: still show underline on hover */
-}
-
-/* Footer */
+/* ==============================
+   Footer Styles
+   ============================== */
 footer {
   text-align: center;
   margin-top: 4rem;
@@ -49,19 +45,46 @@ footer {
   color: #777;
 }
 
-/* Social icon styling in footer */
-footer a i {
-  font-size: 1.2rem;
-  margin: 0 0.3rem;
-  vertical-align: middle;
+/* Footer links general styling */
+footer a {
+  text-decoration: none;
   color: #333;
+  margin: 0 0.3rem; /* spacing between links */
 }
 
+/* Footer hover effects */
+footer a:hover {
+  color: #5f6db3;
+  text-decoration: underline;
+}
+
+/* ==============================
+   Social Icon Styling
+   ============================== */
+/* Ensures Font Awesome icons always display correctly */
+footer a i {
+  font-family: "Font Awesome 6 Brands"; /* Force brands font */
+  font-style: normal; /* Reset italic */
+  font-weight: normal; /* Reset bold */
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: #333;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Social icon hover effect */
 footer a i:hover {
   color: #5f6db3;
 }
 
-/* Articles / Blog Posts */
+/* Optional: space between About Me text and social icons */
+footer p a:first-child {
+  margin-right: 0.6rem;
+}
+
+/* ==============================
+   Articles / Blog Posts
+   ============================== */
 article {
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
@@ -77,7 +100,7 @@ article p {
   margin: 0.5rem 0;
 }
 
-/* Links inside posts on index.html */
+/* Links inside posts */
 #post-list a {
   color: #333;
   text-decoration: none;
@@ -88,7 +111,10 @@ article p {
   text-decoration: underline;
 }
 
-/* Homepage featured images (cropped) */
+/* ==============================
+   Featured Images
+   ============================== */
+/* Homepage cropped images */
 #post-list .post-featured img {
   width: 100%;
   height: 250px;
@@ -99,7 +125,7 @@ article p {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Post page images (full original size) */
+/* Full post page images */
 .post-featured-post img {
   width: 100%;
   height: auto;
@@ -107,4 +133,34 @@ article p {
   margin-bottom: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ==============================
+   Pagination Styles
+   ============================== */
+#pagination {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#pagination button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 0.4rem 0.8rem;
+  margin: 0 0.3rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#pagination button:hover:not(:disabled) {
+  background-color: #5f6db3;
+  color: #fff;
+}
+
+#pagination button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
