@@ -38,18 +38,22 @@
 
   <footer>
     <p>
-      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+      <a href="../about.html">About Me</a> |
+
+      <!-- Social icons wrapped -->
+      <span class="social-icons">
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-flickr"></i>
+        </a>
+      </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
-
-  <script>
-    // Back-link to correct index page
-    const params = new URLSearchParams(window.location.search);
-    const page = params.get('page') || 1;
-    document.getElementById('back-link').href = `../index.html?page=${page}`;
-  </script>
 </body>
 </html>
