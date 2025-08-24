@@ -73,33 +73,38 @@
 
   <!-- ===========================
        JavaScript Section
-       Handles dynamic back link to the correct page
        =========================== -->
   <script>
-    // 1. Read the current ?page= parameter from the URL
+    // ===========================
+    // 1. Read page number from URL
+    // ===========================
     const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || 1; // Default to page 1 if missing
+    const page = urlParams.get('page') || document.body.dataset.page || 1;
 
-    // 2. Update all back links with the current page
+    // ===========================
+    // 2. Update all back links dynamically
+    // ===========================
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // 3. Optional: timezone-safe date display if using a {{DATE}} placeholder
-    const postDateStr = '{{DATE}}';
+    // ===========================
+    // 3. Display date safely (timezone-agnostic)
+    // ===========================
+    const postDateStr = '{{DATE}}'; // Format: YYYY-MM-DD
     if(postDateStr) {
       const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month - 1, day); // month is 0-indexed
-      const dateElements = document.querySelectorAll('article em');
-      dateElements.forEach(el => {
-        el.textContent = dateObj.toLocaleDateString('en-US', {
+      const dateObj = new Date(year, month-1, day); // JS months are 0-indexed
+      const postDateEl = document.getElementById('post-date');
+      if(postDateEl){
+        postDateEl.textContent = dateObj.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric'
         });
-      });
+      }
     }
   </script>
 </body>
