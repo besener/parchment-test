@@ -6,22 +6,25 @@
   <title>Welcome to My Parchment - Parchment</title>
   <link rel="stylesheet" href="../style.css">
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
-<!-- Embed page number for back links -->
-<body data-page="1">
-
-  <!-- Header -->
+<body>
+  <!-- =========================
+       Header Section
+       ========================= -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Top back link -->
+      <!-- Dynamic back link -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
 
+  <!-- =========================
+       Main Post Content
+       ========================= -->
   <main>
     <div class="post-featured-post">
       <img src="images/welcome.jpg" alt="Welcome to My Parchment">
@@ -44,40 +47,38 @@
       interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
 
-    <!-- Another back link at bottom -->
+    <!-- Bottom back link -->
     <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
-  
+
+  <!-- =========================
+       Footer Section
+       ========================= -->
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
-
-      <!-- Social icons wrapped -->
       <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-flickr"></i>
-        </a>
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
       </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- =========================
+       JavaScript Section
+       Handles dynamic back links + timezone-safe date
+       ========================= -->
   <script>
     // ---------------------------
-    // 1. Determine current page
+    // 1. Read ?page from URL
     // ---------------------------
     const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || document.body.dataset.page || 1;
+    const page = urlParams.get('page') || 1;
 
     // ---------------------------
-    // 2. Update back links
+    // 2. Update all back links
     // ---------------------------
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
@@ -88,14 +89,16 @@
     // ---------------------------
     // 3. Display post date safely
     // ---------------------------
-    const postDateStr = '2025-08-20'; // replace with {{DATE}} if generating dynamically
-    const [year, month, day] = postDateStr.split('-').map(Number);
-    const dateObj = new Date(year, month-1, day);
-    document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
+    if(postDateStr) {
+      const [year, month, day] = postDateStr.split('-').map(Number);
+      const dateObj = new Date(year, month-1, day); // JS months 0-indexed
+      document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
   </script>
 </body>
 </html>
