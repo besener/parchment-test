@@ -49,6 +49,18 @@ footer {
   color: #777;
 }
 
+/* Social icon styling in footer */
+footer a i {
+  font-size: 1.2rem;
+  margin: 0 0.3rem;
+  vertical-align: middle;
+  color: #333;
+}
+
+footer a i:hover {
+  color: #5f6db3;
+}
+
 /* Articles / Blog Posts */
 article {
   margin-bottom: 2.5rem;
