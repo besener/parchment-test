@@ -4,35 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}} - Parchment</title>
+
+  <!-- Global stylesheet -->
   <link rel="stylesheet" href="../style.css">
 
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Back link dynamically updated via JS -->
+      <!-- Top back link; JS will update dynamically with page number -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
 
+  <!-- Main content -->
   <main>
+    <!-- Featured post image -->
     <div class="post-featured-post">
       <img src="images/{{IMAGE}}" alt="{{TITLE}}">
     </div>
 
+    <!-- Article content -->
     <article>
       <h2>{{TITLE}}</h2>
-      <p><em>{{DATE}}</em></p>
+      
+      <!-- Timezone-safe date -->
+      <p><em id="post-date"></em></p>
+
+      <!-- Post body/content -->
       <p>{{CONTENT}}</p>
     </article>
 
-    <!-- Another back link at bottom of post -->
+    <!-- Bottom back link -->
     <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
 
+  <!-- Footer with social icons -->
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
@@ -45,22 +56,39 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JS to read ?page= parameter and update back links dynamically -->
+  <!-- ===========================
+       JavaScript Section
+       =========================== -->
   <script>
     // ===========================
-    // Get page number from URL query string
+    // 1. Get page number from URL query string
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('page') || 1;
 
     // ===========================
-    // Update all back links to include current page
+    // 2. Update all back links with current page number
     // ===========================
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
+
+    // ===========================
+    // 3. Display timezone-safe post date
+    //    Parses {{DATE}} placeholder from server or generator
+    // ===========================
+    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
+    if(postDateStr) {
+      const [year, month, day] = postDateStr.split('-').map(Number);
+      const dateObj = new Date(year, month-1, day); // month is 0-indexed
+      document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
   </script>
 </body>
 </html>
