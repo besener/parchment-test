@@ -2,37 +2,37 @@
    Base Styles
    ============================== */
 body {
-  font-family: Georgia, serif;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-  line-height: 1.6;
-  background: #fdfcf7;
-  color: #333;
+  font-family: Georgia, serif;           /* Elegant serif for blog readability */
+  max-width: 800px;                      /* Constrains width for better line length */
+  margin: 2rem auto;                     /* Centers the content vertically & horizontally */
+  padding: 1rem;                         /* Inner padding for breathing room */
+  line-height: 1.6;                      /* Comfortable reading line height */
+  background: #fdfcf7;                   /* Soft parchment-like background */
+  color: #333;                           /* Dark grey text for readability */
 }
 
 header {
-  text-align: center;
-  margin-bottom: 2rem;
+  text-align: center;                    /* Centers blog title & description */
+  margin-bottom: 2rem;                   /* Space between header and main content */
 }
 
 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.2rem;
+  font-size: 2.5rem;                     /* Large blog title */
+  margin-bottom: 0.2rem;                 /* Small gap before subtitle */
 }
 
 /* ==============================
    Navigation Links
    ============================== */
 nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
+  margin: 0 10px;                        /* Horizontal spacing between nav links */
+  text-decoration: none;                  /* Remove underline initially */
+  color: #333;                            /* Dark text color for links */
 }
 
 nav a:hover {
-  color: #5f6db3;
-  text-decoration: underline;
+  color: #5f6db3;                        /* Blue hover color for interactivity */
+  text-decoration: underline;             /* Underline appears on hover */
 }
 
 /* ==============================
@@ -40,49 +40,46 @@ nav a:hover {
    ============================== */
 footer {
   text-align: center;
-  margin-top: 4rem;
-  font-size: 0.9rem;
-  color: #777;
+  margin-top: 4rem;                       /* Space above footer */
+  font-size: 0.9rem;                      /* Slightly smaller font */
+  color: #777;                            /* Light grey text */
 }
 
-/* Footer text links */
 footer a {
-  text-decoration: none;
+  text-decoration: none;                  /* Normal links have no underline */
   color: #333;
-  margin: 0 0.3rem;
+  margin: 0 0.3rem;                       /* Small spacing between footer links */
 }
 
-/* Footer text link hover (keeps underline for text links) */
 footer a:hover {
-  color: #5f6db3;
-  text-decoration: underline;
+  color: #5f6db3;                        /* Hover color */
+  text-decoration: underline;             /* Text link underline appears on hover */
 }
 
 /* ==============================
    Social Icon Styling
    ============================== */
 .social-icons a {
-  text-decoration: none;   /* explicitly remove underline */
-  margin: 0 8px;
-  color: #333;
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
+  text-decoration: none;                  /* Remove default underline */
+  margin: 0 8px;                          /* Horizontal spacing between icons */
+  color: #333;                             /* Default icon color */
+  font-size: 1.2rem;                       /* Slightly larger than normal text */
+  transition: color 0.2s ease-in-out;      /* Smooth color transition on hover */
 }
 
 .social-icons a:hover {
-  color: #5f6db3;
-  text-decoration: none;   /* ensure underline never shows */
+  color: #5f6db3;                        /* Only icon color changes on hover */
+  text-decoration: none;                   /* Ensures icons never get underlined */
 }
 
-/* Font Awesome specific override */
 .social-icons i {
-  font-family: "Font Awesome 6 Brands";
+  font-family: "Font Awesome 6 Brands";   /* Ensures brand icons display correctly */
   font-style: normal;
   font-weight: normal;
-  vertical-align: middle;
+  vertical-align: middle;                 /* Align icons with text baseline */
 }
 
-/* Space between first footer text link and icons */
+/* Optional spacing for About Me text */
 footer p a:first-child {
   margin-right: 0.6rem;
 }
@@ -91,23 +88,22 @@ footer p a:first-child {
    Articles / Blog Posts
    ============================== */
 article {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 2.5rem;                  /* Space between posts */
+  padding-bottom: 1rem;                   /* Space inside article bottom */
+  border-bottom: 1px solid #ddd;          /* Subtle separator line between posts */
 }
 
 article h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.5rem;                      /* Post title size */
 }
 
 article p {
-  margin: 0.5rem 0;
+  margin: 0.5rem 0;                        /* Paragraph spacing */
 }
 
-/* Links inside posts */
 #post-list a {
-  color: #333;
+  color: #333;                             /* Links inside post previews */
   text-decoration: none;
 }
 
@@ -121,19 +117,19 @@ article p {
    ============================== */
 /* Homepage cropped images */
 #post-list .post-featured img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
+  width: 100%;                             /* Full width of container */
+  height: 250px;                            /* Fixed height for homepage thumbnails */
+  object-fit: cover;                        /* Crop images without distortion */
   display: block;
   margin-bottom: 0.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);    /* Soft shadow for depth */
 }
 
 /* Full post page images */
 .post-featured-post img {
   width: 100%;
-  height: auto;
+  height: auto;                            /* Maintain aspect ratio */
   display: block;
   margin-bottom: 1rem;
   border-radius: 8px;
@@ -145,7 +141,7 @@ article p {
    ============================== */
 #pagination {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2rem;                        /* Space above pagination */
 }
 
 #pagination button {
@@ -161,11 +157,11 @@ article p {
 }
 
 #pagination button:hover:not(:disabled) {
-  background-color: #5f6db3;
+  background-color: #5f6db3;               /* Highlight on hover */
   color: #fff;
 }
 
 #pagination button:disabled {
-  opacity: 0.5;
+  opacity: 0.5;                             /* Grey out disabled buttons */
   cursor: default;
 }
