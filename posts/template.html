@@ -4,45 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}} - Parchment</title>
-
-  <!-- Global stylesheet -->
   <link rel="stylesheet" href="../style.css">
 
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
-<!-- ===========================
-     Add data-page attribute for JS
-     - {{PAGE}} should be replaced during generation
-     - Example: <body data-page="2">
-     =========================== -->
+<!-- Include the original index page number here -->
 <body data-page="{{PAGE}}">
 
   <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Top back link; updated dynamically -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
 
-  <!-- Main content -->
   <main>
     <!-- Featured image -->
     <div class="post-featured-post">
       <img src="images/{{IMAGE}}" alt="{{TITLE}}">
     </div>
 
-    <!-- Article content -->
+    <!-- Post content -->
     <article>
       <h2>{{TITLE}}</h2>
-
-      <!-- Timezone-safe date -->
       <p><em id="post-date"></em></p>
-
-      <!-- Post body/content -->
       <p>{{CONTENT}}</p>
     </article>
 
@@ -50,7 +38,7 @@
     <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
 
-  <!-- Footer with social icons -->
+  <!-- Footer -->
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
@@ -63,35 +51,30 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- ===========================
-       JavaScript Section
-       =========================== -->
+  <!-- JavaScript -->
   <script>
-    // ===========================
-    // 1. Determine page number for back links
-    // ===========================
+    // ---------------------------
+    // 1. Determine current page for back links
+    // ---------------------------
     const urlParams = new URLSearchParams(window.location.search);
-
-    // Use ?page= if present, else fallback to data-page attribute, else default 1
     const page = urlParams.get('page') || document.body.dataset.page || 1;
 
-    // ===========================
-    // 2. Update all back links dynamically
-    // ===========================
+    // ---------------------------
+    // 2. Update back links dynamically
+    // ---------------------------
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // ===========================
-    // 3. Timezone-safe date display
-    //    {{DATE}} placeholder format: "YYYY-MM-DD"
-    // ===========================
-    const postDateStr = '{{DATE}}';
+    // ---------------------------
+    // 3. Display post date safely
+    // ---------------------------
+    const postDateStr = '{{DATE}}'; // "YYYY-MM-DD"
     if(postDateStr) {
       const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // month is 0-indexed
+      const dateObj = new Date(year, month-1, day);
       document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
