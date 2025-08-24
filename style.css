@@ -189,3 +189,21 @@ article p {
   color: #5f6db3;
   text-decoration: underline;
 }
+
+/* ==============================
+   Back to Page Link Styling
+   ============================== */
+.back-link {
+  display: inline-block;
+  margin: 1rem 0;              /* Space above/below */
+  color: #333;                  /* Base color */
+  text-decoration: none;        /* Remove underline initially */
+  font-weight: bold;            /* Slightly bolder for visibility */
+  transition: color 0.2s, text-decoration 0.2s; /* Smooth hover transition */
+}
+
+.back-link:hover {
+  color: #5f6db3;               /* Hover color matches other interactive links */
+  text-decoration: underline;   /* Underline appears on hover */
+}
+
