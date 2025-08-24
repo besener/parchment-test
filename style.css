@@ -5,31 +5,94 @@ body {
   margin: 2rem auto;
   padding: 1rem;
   line-height: 1.6;
-  background: #f0f0f5; /* Updated background color */
-  color: #222;          /* Updated text color */
+  background: #fdfcf7; /* Reverted to original background */
+  color: #333;
 }
 
-header { text-align: center; margin-bottom: 2rem; }
-h1 { font-size: 2.5rem; }
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-nav a { margin:0 10px; text-decoration:none; color:#222; }
-nav a:hover { color:#1e90ff; text-decoration:underline; }
+h1 {
+  font-size: 2.5rem;
+}
 
-footer a { text-decoration:none; color:#222; margin:0 5px; }
-footer a:hover { color:#1e90ff; text-decoration:underline; }
+/* Navigation link without underline */
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
 
-footer { text-align:center; margin-top:4rem; font-size:0.9rem; color:#777; }
+nav a:hover {
+  color: #5f6db3; /* Link hover color */
+  text-decoration: underline; 
+}
 
-article { margin-bottom:2.5rem; padding-bottom:1rem; border-bottom:1px solid #ddd; }
-article h3 { margin:0; font-size:1.5rem; }
-article p { margin:0.5rem 0; }
+/* Footer link without underline */
+footer a {
+  text-decoration: none;
+  color: #333; /* Footer link color */
+}
 
-/* Homepage featured images */
-#post-list .post-featured img { width:100%; height:250px; object-fit:cover; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+footer a:hover {
+  color: #5f6db3;
+  text-decoration: underline; 
+}
 
-/* Post page images */
-.post-featured-post img { width:100%; height:auto; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #777;
+}
 
-/* Social Icons */
-footer a i { margin-right:5px; }
+/* Articles / Blog Posts */
+article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
 
+article h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+article p {
+  margin: 0.5rem 0;
+}
+
+/* Links inside posts on index.html */
+#post-list a {
+  color: #333;
+  text-decoration: none;
+}
+
+#post-list a:hover {
+  color: #5f6db3;
+  text-decoration: underline;
+}
+
+/* Homepage featured images (cropped) */
+#post-list .post-featured img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Post page images (full original size) */
+.post-featured-post img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
