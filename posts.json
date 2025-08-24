@@ -4,21 +4,21 @@
     "date": "2025-08-21",
     "file": "welcome.html",
     "excerpt": "This is my very first post on Parchment! Here I’ll share thoughts, travels, and experiments...",
-    "image": "welcome.jpg"
+    "image": "posts/images/welcome.jpg"
   },
   {
     "title": "Traveling",
     "date": "2025-08-22",
     "file": "travel.html",
     "excerpt": "I just returned from my first trip since starting Parchment, and I have so much to share...",
-    "image": "travel.jpg"
+    "image": "posts/images/travel.jpg"
   },
   {
     "title": "Summer",
     "date": "2025-08-22",
     "file": "summer.html",
     "excerpt": "Sometimes the smallest details inspire the biggest ideas. Summer vibes...",
-    "image": "summer.jpg"
+    "image": "posts/images/summer.jpg"
   },
   {
     "title": "New Post 1",
