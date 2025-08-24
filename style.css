@@ -1,12 +1,14 @@
-/* Base Styles */
+/* =========================
+   Base Styles
+   ========================= */
 body {
   font-family: Georgia, serif;
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
   line-height: 1.6;
-  background: #fdfcf7;
-  color: #333;
+  background: #fdfcf7; /* Page background */
+  color: #333; /* Default body text color */
 }
 
 header {
@@ -18,30 +20,37 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* Navigation link without underline */
+/* =========================
+   Navigation
+   ========================= */
+/* Navigation links (no underline by default) */
 nav a {
   margin: 0 10px;
   text-decoration: none;
-  color: #333;
+  color: #333; /* Default nav link color */
 }
 
+/* Hover state for navigation links */
 nav a:hover {
-  color: #5f6db3;
-  text-decoration: underline; /* Optional: still show underline on hover */
+  color: #d35400; /* UPDATED hover color */
+  text-decoration: underline; /* Optional: underline on hover */
 }
 
-/* Footer link without underline */
+/* =========================
+   Footer
+   ========================= */
+/* Footer links (no underline by default) */
 footer a {
   text-decoration: none;
-  color: #333; /* Optional: keep the same color as other links */
+  color: #1a1a1a; /* UPDATED footer link color */
 }
 
 footer a:hover {
-  color: #5f6db3;
-  text-decoration: underline; /* Optional: still show underline on hover */
+  color: #d35400; /* Match nav hover color for consistency */
+  text-decoration: underline; 
 }
 
-/* Footer */
+/* Footer text styling */
 footer {
   text-align: center;
   margin-top: 4rem;
@@ -49,7 +58,9 @@ footer {
   color: #777;
 }
 
-/* Articles / Blog Posts */
+/* =========================
+   Articles / Blog Posts
+   ========================= */
 article {
   margin-bottom: 2.5rem;
   padding-bottom: 1rem;
@@ -65,18 +76,23 @@ article p {
   margin: 0.5rem 0;
 }
 
-/* Links inside posts on index.html */
+/* =========================
+   Index Page Links
+   ========================= */
 #post-list a {
   color: #333;
   text-decoration: none;
 }
 
 #post-list a:hover {
-  color: #5f6db3;
+  color: #d35400; /* Hover matches nav and footer hover color */
   text-decoration: underline;
 }
 
-/* Homepage featured images (cropped) */
+/* =========================
+   Featured Images
+   ========================= */
+/* Homepage featured images (cropped thumbnails) */
 #post-list .post-featured img {
   width: 100%;
   height: 250px;
@@ -87,7 +103,7 @@ article p {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Post page images (full original size) */
+/* Post page images (full size) */
 .post-featured-post img {
   width: 100%;
   height: auto;
@@ -96,3 +112,4 @@ article p {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
