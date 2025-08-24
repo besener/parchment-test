@@ -75,6 +75,7 @@ footer a i {
 /* Social icon hover effect */
 footer a i:hover {
   color: #5f6db3;
+  text-decoration: none;
 }
 
 /* Optional: space between About Me text and social icons */
