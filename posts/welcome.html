@@ -12,7 +12,10 @@
 <body>
   <header>
     <h1>Parchment</h1>
-    <nav><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></nav>
+    <nav>
+      <!-- Back link will be updated dynamically by JS -->
+      <a id="back-link" href="../index.html">← Back to Page</a>
+    </nav>
   </header>
 
   <main>
@@ -37,9 +40,10 @@
       interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
 
-    <p><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></p>
+    <!-- Another back link at bottom -->
+    <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
-
+  
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
@@ -59,5 +63,21 @@
     </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <!-- JS to read ?page= parameter and update back links -->
+  <script>
+    // Get ?page= query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page') || 1;
+
+    // Update all back links
+    const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
+    backLinks.forEach(link => {
+      link.href = `../index.html?page=${page}`;
+      link.textContent = `← Back to Page ${page}`;
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
