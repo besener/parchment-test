@@ -11,12 +11,19 @@
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body>
+
+<!-- ===========================
+     Add data-page attribute for JS
+     - {{PAGE}} should be replaced during generation
+     - Example: <body data-page="2">
+     =========================== -->
+<body data-page="{{PAGE}}">
+
   <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Top back link; JS will update dynamically -->
+      <!-- Top back link; updated dynamically -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
@@ -61,18 +68,15 @@
        =========================== -->
   <script>
     // ===========================
-    // 1. Get page number
+    // 1. Determine page number for back links
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
-    let page = urlParams.get('page');
 
-    // If no ?page= in URL, fallback to {{PAGE}} placeholder
-    if (!page) {
-      page = '{{PAGE}}'; // pre-filled when generating HTML
-    }
+    // Use ?page= if present, else fallback to data-page attribute, else default 1
+    const page = urlParams.get('page') || document.body.dataset.page || 1;
 
     // ===========================
-    // 2. Update all back links
+    // 2. Update all back links dynamically
     // ===========================
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
@@ -81,9 +85,10 @@
     });
 
     // ===========================
-    // 3. Timezone-safe date
+    // 3. Timezone-safe date display
+    //    {{DATE}} placeholder format: "YYYY-MM-DD"
     // ===========================
-    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
+    const postDateStr = '{{DATE}}';
     if(postDateStr) {
       const [year, month, day] = postDateStr.split('-').map(Number);
       const dateObj = new Date(year, month-1, day); // month is 0-indexed
