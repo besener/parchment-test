@@ -4,60 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parchment Blog</title>
-
-  <!-- Link to global stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <p>My blog about baking, travel, and life in/outside academia</p>
   </header>
 
-  <!-- Main content -->
   <main>
     <h2>Recent Posts</h2>
     <div id="post-list"></div>
 
-    <!-- Pagination controls -->
     <div id="pagination">
-      <button id="prev-page" disabled>← Previous</button>
+      <button id="prev-page">← Previous</button>
       <span id="page-info">Page 1</span>
       <button id="next-page">Next →</button>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>
-      <!-- Text link should still underline on hover -->
       <a href="about.html">About Me</a> |
-
-      <!-- Social icons wrapped inside .social-icons span -->
       <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-flickr"></i>
-        </a>
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
       </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JavaScript for posts and pagination -->
   <script>
     const POSTS_PER_PAGE = 5;
-    let currentPage = 1;
     let posts = [];
+    
+    // Get current page from URL (?page=2)
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentPage = parseInt(urlParams.get('page')) || 1;
 
     const postList = document.getElementById('post-list');
     const prevBtn = document.getElementById('prev-page');
@@ -74,41 +59,45 @@
 
     function renderPage() {
       postList.innerHTML = '';
-      const start = (currentPage-1)*POSTS_PER_PAGE;
+      const start = (currentPage - 1) * POSTS_PER_PAGE;
       const end = start + POSTS_PER_PAGE;
-      const pagePosts = posts.slice(start,end);
+      const pagePosts = posts.slice(start, end);
 
       pagePosts.forEach(post => {
-        const dateObj = new Date(post.date);
-        const formattedDate = dateObj.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-
+        const formattedDate = new Date(post.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
         const article = document.createElement('article');
         article.innerHTML = `
           <div class="post-featured">
-            <a href="posts/${post.file}?page=${currentPage}">
-              <img src="${post.image}" alt="${post.title}">
+            <a href="posts.html?post=${post.file}&page=${currentPage}">
+              <img src="posts/images/${post.image.split('/').pop()}" alt="${post.title}">
             </a>
           </div>
-          <h3><a href="posts/${post.file}?page=${currentPage}">${post.title}</a></h3>
+          <h3><a href="posts.html?post=${post.file}&page=${currentPage}">${post.title}</a></h3>
           <p><em>${formattedDate}</em></p>
-          <p>${post.excerpt} <a href="posts/${post.file}?page=${currentPage}">Read more →</a></p>
+          <p>${post.excerpt} <a href="posts.html?post=${post.file}&page=${currentPage}">Read more →</a></p>
         `;
         postList.appendChild(article);
       });
 
-      const totalPages = Math.ceil(posts.length/POSTS_PER_PAGE);
+      const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
       pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-      prevBtn.disabled = currentPage===1;
-      nextBtn.disabled = currentPage===totalPages;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
     }
 
-    prevBtn.addEventListener('click',()=>{
-      if(currentPage>1){currentPage--;renderPage();window.scrollTo(0,0);}
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) { currentPage--; updateURL(); renderPage(); window.scrollTo(0,0); }
     });
-    nextBtn.addEventListener('click',()=>{
-      const totalPages=Math.ceil(posts.length/POSTS_PER_PAGE);
-      if(currentPage<totalPages){currentPage++;renderPage();window.scrollTo(0,0);}
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+      if (currentPage < totalPages) { currentPage++; updateURL(); renderPage(); window.scrollTo(0,0); }
     });
+
+    function updateURL() {
+      const newURL = new URL(window.location.href);
+      newURL.searchParams.set('page', currentPage);
+      window.history.replaceState({}, '', newURL);
+    }
   </script>
 </body>
 </html>
