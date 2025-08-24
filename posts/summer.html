@@ -54,22 +54,39 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JS to read ?page= parameter and update back links dynamically -->
+  <!-- ===========================
+       JavaScript Section
+       =========================== -->
   <script>
     // ===========================
-    // Get page number from URL query string
+    // 1. Get page number from URL query string
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('page') || 1;
 
     // ===========================
-    // Update all back links to include current page
+    // 2. Update all back links with current page number
     // ===========================
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
+
+    // ===========================
+    // 3. Display timezone-safe post date
+    //    Parses {{DATE}} placeholder from server or generator
+    // ===========================
+    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
+    if(postDateStr) {
+      const [year, month, day] = postDateStr.split('-').map(Number);
+      const dateObj = new Date(year, month-1, day); // month is 0-indexed
+      document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
   </script>
 </body>
 </html>
