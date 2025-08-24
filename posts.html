@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="page-title">Parchment Post</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Back to page link is updated dynamically by JS -->
-      <a id="back-link" href="../index.html">← Back to Page</a>
+      <a id="back-link" href="#">← Back to Page</a>
     </nav>
   </header>
 
-  <!-- Main content -->
   <main>
     <div class="post-featured-post">
       <img id="post-image" src="" alt="">
@@ -28,14 +23,12 @@
     <article>
       <h2 id="post-title"></h2>
       <p><em id="post-date"></em></p>
-      <p id="post-content"></p>
+      <div id="post-content"></div>
     </article>
 
-    <!-- Duplicate back link at bottom -->
-    <p><a id="back-link-bottom" href="../index.html" class="back-link">← Back to Page</a></p>
+    <p><a id="back-link-bottom" href="#" class="back-link">← Back to Page</a></p>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>
       <a href="about.html">About Me</a> |
@@ -48,47 +41,42 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JavaScript to load post dynamically -->
   <script>
     const POSTS_PER_PAGE = 5;
 
-    // Get URL parameter (?post=filename.html)
     function getQueryParam(name) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(name);
+      return new URLSearchParams(window.location.search).get(name);
     }
 
     const postFile = getQueryParam('post');
+    const pageNum = parseInt(getQueryParam('page')) || 1;
 
     if (!postFile) {
       document.querySelector('main').innerHTML = "<p>No post specified.</p>";
     } else {
-      // Load all posts
       fetch("posts.json")
         .then(res => res.json())
         .then(posts => {
-          // Sort newest first
           posts.sort((a,b) => new Date(b.date) - new Date(a.date));
           const postIndex = posts.findIndex(p => p.file === postFile);
-
-          if(postIndex === -1){
+          if (postIndex === -1) {
             document.querySelector('main').innerHTML = "<p>Post not found.</p>";
             return;
           }
 
           const post = posts[postIndex];
-
-          // Fill post content
           document.getElementById('page-title').textContent = `${post.title} - Parchment`;
           document.getElementById('post-title').textContent = post.title;
-          document.getElementById('post-date').textContent = new Date(post.date)
-            .toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-          document.getElementById('post-content').innerHTML = post.content || post.excerpt;
+          document.getElementById('post-date').textContent = new Date(post.date).toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
           document.getElementById('post-image').src = post.image;
           document.getElementById('post-image').alt = post.title;
 
-          // Compute back page
-          const pageNum = Math.floor(postIndex / POSTS_PER_PAGE) + 1;
+          // Load HTML content if exists (fallback to excerpt)
+          fetch(`posts/${post.file}`)
+            .then(r => r.text())
+            .then(html => document.getElementById('post-content').innerHTML = html)
+            .catch(() => document.getElementById('post-content').innerHTML = post.excerpt);
+
           const backLink = `index.html?page=${pageNum}`;
           document.getElementById('back-link').href = backLink;
           document.getElementById('back-link').textContent = `← Back to Page ${pageNum}`;
