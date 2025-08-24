@@ -207,3 +207,16 @@ article p {
   text-decoration: underline;   /* Underline appears on hover */
 }
 
+/* ==============================
+   Back link arrow animation
+   ============================== */
+.back-link::before {
+  content: "←";
+  display: inline-block;
+  margin-right: 0.3rem;                 /* Space between arrow and text */
+  transition: transform 0.2s ease-in-out; /* Smooth movement on hover */
+}
+
+.back-link:hover::before {
+  transform: translateX(-4px);          /* Slide arrow slightly left */
+}
