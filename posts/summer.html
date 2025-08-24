@@ -1,17 +1,18 @@
-<!-- Use template.html as base, replace {{TITLE}}, {{DATE}}, {{IMAGE}}, {{CONTENT}} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Parchment - Parchment</title>
-  <link rel="stylesheet" href="../style.css">
-  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
+  <title>Summer - Parchment</title>
+ <link rel="stylesheet" href="../style.css">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
   <header>
     <h1>Summer</h1>
-    <nav><a id="back-link" href="../index.html">← Back</a></nav>
+    <nav><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></nav>
   </header>
 
   <main>
@@ -33,22 +34,28 @@
       turpis eu nibh fermentum ornare. Donec sagittis lacus semper odio efficitur, sit amet iaculis velit fermentum. Nam vel interdum erat. Vestibulum efficitur 
       sagittis tellus, a ultrices sem efficitur id. Quisque interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
+    
+ <p><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></p>
   </main>
 
   <footer>
     <p>
-      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+      <a href="../about.html">About Me</a> |
+
+      <!-- Social icons wrapped -->
+      <span class="social-icons">
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-flickr"></i>
+        </a>
+      </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
-
-  <script>
-    // Back-link to correct index page
-    const params = new URLSearchParams(window.location.search);
-    const page = params.get('page') || 1;
-    document.getElementById('back-link').href = `../index.html?page=${page}`;
-  </script>
 </body>
 </html>
