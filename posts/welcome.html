@@ -6,13 +6,16 @@
   <title>Welcome to My Parchment - Parchment</title>
   <link rel="stylesheet" href="../style.css">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
   <header>
     <h1>Parchment</h1>
-    <nav><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></nav>
+    <nav>
+      <!-- Back link will be updated dynamically by JS -->
+      <a id="back-link" href="#">← Back to Page</a>
+    </nav>
   </header>
 
   <main>
@@ -36,27 +39,39 @@
       interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
 
-    <p><a href="../index.html?page={{PAGE}}" class="back-link">← Back to page {{PAGE}}</a></p>
+    <p><a id="back-link-bottom" href="#" class="back-link">← Back to Page</a></p>
   </main>
 
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
-
-      <!-- Social icons wrapped -->
       <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-flickr"></i>
-        </a>
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
       </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <script>
+    // Automatically update back links to point to correct page in index.html
+    const POSTS_PER_PAGE = 5;
+
+    // Fetch posts.json to compute page of this post
+    fetch("../posts.json")
+      .then(res => res.json())
+      .then(posts => {
+        posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+        const postIndex = posts.findIndex(p => p.file === 'welcome.html');
+        const pageNum = Math.floor(postIndex / POSTS_PER_PAGE) + 1;
+        const backLink = `../index.html?page=${pageNum}`;
+        document.getElementById('back-link').href = backLink;
+        document.getElementById('back-link').textContent = `← Back to Page ${pageNum}`;
+        document.getElementById('back-link-bottom').href = backLink;
+        document.getElementById('back-link-bottom').textContent = `← Back to Page ${pageNum}`;
+      })
+      .catch(err => console.error("Failed to update back link:", err));
+  </script>
 </body>
 </html>
