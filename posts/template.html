@@ -6,86 +6,90 @@
   <title>{{TITLE}} - Parchment</title>
   <link rel="stylesheet" href="../style.css">
 
-  <!-- Font Awesome for social icons -->
+  <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-
 <body>
-  <!-- =========================
+  <!-- ===========================
        Header Section
-       ========================= -->
+       =========================== -->
   <header>
     <h1>Parchment</h1>
     <nav>
-      <!-- Dynamic back link -->
+      <!-- Back link dynamically updated via JS -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
 
-  <!-- =========================
+  <!-- ===========================
        Main Post Content
-       ========================= -->
+       =========================== -->
   <main>
+    <!-- Featured image for the post -->
     <div class="post-featured-post">
       <img src="images/{{IMAGE}}" alt="{{TITLE}}">
     </div>
 
+    <!-- Post content -->
     <article>
       <h2>{{TITLE}}</h2>
-      <p><em id="post-date"></em></p>
+      <p><em>{{DATE}}</em></p>
       <p>{{CONTENT}}</p>
     </article>
 
-    <!-- Bottom back link -->
+    <!-- Duplicate back link at the bottom for convenience -->
     <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
 
-  <!-- =========================
+  <!-- ===========================
        Footer Section
-       ========================= -->
+       =========================== -->
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
       <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-flickr"></i>
+        </a>
       </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- =========================
+  <!-- ===========================
        JavaScript Section
-       Handles dynamic back links + timezone-safe date
-       ========================= -->
+       Handles dynamic back link to the correct page
+       =========================== -->
   <script>
-    // ---------------------------
-    // 1. Read ?page from URL
-    // ---------------------------
+    // 1. Read the current ?page= parameter from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || 1;
+    const page = urlParams.get('page') || 1; // Default to page 1 if missing
 
-    // ---------------------------
-    // 2. Update all back links
-    // ---------------------------
+    // 2. Update all back links with the current page
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
       link.href = `../index.html?page=${page}`;
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // ---------------------------
-    // 3. Display post date safely
-    // ---------------------------
-    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
+    // 3. Optional: timezone-safe date display if using a {{DATE}} placeholder
+    const postDateStr = '{{DATE}}';
     if(postDateStr) {
       const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // JS months 0-indexed
-      document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+      const dateObj = new Date(year, month - 1, day); // month is 0-indexed
+      const dateElements = document.querySelectorAll('article em');
+      dateElements.forEach(el => {
+        el.textContent = dateObj.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
       });
     }
   </script>
