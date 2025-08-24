@@ -6,28 +6,30 @@
   <title>{{TITLE}} - Parchment</title>
   <link rel="stylesheet" href="../style.css">
 
-  <!-- Font Awesome CDN for social icons -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
-<!-- Include the original index page number here -->
-<body data-page="{{PAGE}}">
-
-  <!-- Header -->
+<body>
+  <!-- =========================
+       Header Section
+       ========================= -->
   <header>
     <h1>Parchment</h1>
     <nav>
+      <!-- Dynamic back link -->
       <a id="back-link" href="../index.html">← Back to Page</a>
     </nav>
   </header>
 
+  <!-- =========================
+       Main Post Content
+       ========================= -->
   <main>
-    <!-- Featured image -->
     <div class="post-featured-post">
       <img src="images/{{IMAGE}}" alt="{{TITLE}}">
     </div>
 
-    <!-- Post content -->
     <article>
       <h2>{{TITLE}}</h2>
       <p><em id="post-date"></em></p>
@@ -38,7 +40,9 @@
     <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
 
-  <!-- Footer -->
+  <!-- =========================
+       Footer Section
+       ========================= -->
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
@@ -51,16 +55,19 @@
     <p>© 2025 Parchment</p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- =========================
+       JavaScript Section
+       Handles dynamic back links + timezone-safe date
+       ========================= -->
   <script>
     // ---------------------------
-    // 1. Determine current page for back links
+    // 1. Read ?page from URL
     // ---------------------------
     const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || document.body.dataset.page || 1;
+    const page = urlParams.get('page') || 1;
 
     // ---------------------------
-    // 2. Update back links dynamically
+    // 2. Update all back links
     // ---------------------------
     const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
     backLinks.forEach(link => {
@@ -71,10 +78,10 @@
     // ---------------------------
     // 3. Display post date safely
     // ---------------------------
-    const postDateStr = '{{DATE}}'; // "YYYY-MM-DD"
+    const postDateStr = '{{DATE}}'; // format: "YYYY-MM-DD"
     if(postDateStr) {
       const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day);
+      const dateObj = new Date(year, month-1, day); // JS months 0-indexed
       document.getElementById('post-date').textContent = dateObj.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
