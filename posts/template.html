@@ -5,41 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}} - Parchment</title>
   <link rel="stylesheet" href="../style.css">
-  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome for social icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Header with back to home link -->
   <header>
     <h1>Parchment</h1>
-    <nav><a id="back-link" href="../index.html">← Back</a></nav>
+    <nav><a href="../index.html">Home</a></nav>
   </header>
 
+  <!-- Main post content -->
   <main>
+    <!-- Featured image -->
     <div class="post-featured-post">
       <img src="images/{{IMAGE}}" alt="{{TITLE}}">
     </div>
 
+    <!-- Article content -->
     <article>
       <h2>{{TITLE}}</h2>
       <p><em>{{DATE}}</em></p>
       <p>{{CONTENT}}</p>
     </article>
+
+    <!-- Back-link to the exact index page number -->
+    <p><a href="../index.html?page={{PAGE}}" class="back-link">← Back to page {{PAGE}}</a></p>
   </main>
 
+  <!-- Footer with social icons -->
   <footer>
     <p>
-      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+      <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
-
-  <script>
-    // Preserve back-link page number
-    const params = new URLSearchParams(window.location.search);
-    const page = params.get('page') || 1;
-    document.getElementById('back-link').href = `../index.html?page=${page}`;
-  </script>
 </body>
 </html>
-
