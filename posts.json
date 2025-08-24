@@ -15,86 +15,128 @@
   },
   {
     "title": "Summer",
-    "date": "2025-08-22",
+    "date": "2025-08-23",
     "file": "summer.html",
     "excerpt": "Sometimes the smallest details inspire the biggest ideas. Summer vibes...",
     "image": "posts/images/summer.jpg"
-  },
-  {
-    "title": "New Post 1",
-    "date": "2025-08-23",
-    "file": "new-post-1.html",
-    "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-1.jpg"
-  },
-  {
-    "title": "New Post 2",
-    "date": "2025-08-23",
-    "file": "new-post-2.html",
-    "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-2.jpg"
-  },
-  {
-    "title": "New Post 3",
-    "date": "2025-08-24",
-    "file": "new-post-3.html",
-    "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-3.jpg"
   },
   {
     "title": "New Post 4",
     "date": "2025-08-24",
     "file": "new-post-4.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-4.jpg"
+    "image": "posts/images/new-post-4.jpg"
   },
   {
     "title": "New Post 5",
     "date": "2025-08-25",
     "file": "new-post-5.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-5.jpg"
+    "image": "posts/images/new-post-5.jpg"
   },
   {
     "title": "New Post 6",
-    "date": "2025-08-25",
+    "date": "2025-08-26",
     "file": "new-post-6.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-6.jpg"
+    "image": "posts/images/new-post-6.jpg"
   },
   {
     "title": "New Post 7",
-    "date": "2025-08-26",
+    "date": "2025-08-27",
     "file": "new-post-7.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-7.jpg"
+    "image": "posts/images/new-post-7.jpg"
   },
   {
     "title": "New Post 8",
-    "date": "2025-08-26",
+    "date": "2025-08-28",
     "file": "new-post-8.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-8.jpg"
+    "image": "posts/images/new-post-8.jpg"
   },
   {
     "title": "New Post 9",
-    "date": "2025-08-27",
+    "date": "2025-08-29",
     "file": "new-post-9.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-9.jpg"
+    "image": "posts/images/new-post-9.jpg"
   },
   {
     "title": "New Post 10",
-    "date": "2025-08-27",
+    "date": "2025-08-30",
     "file": "new-post-10.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-10.jpg"
+    "image": "posts/images/new-post-10.jpg"
   },
   {
     "title": "New Post 11",
-    "date": "2025-08-28",
+    "date": "2025-08-31",
     "file": "new-post-11.html",
     "excerpt": "Short summary or excerpt of the new post...",
-    "image": "new-post-11.jpg"
+    "image": "posts/images/new-post-11.jpg"
+  },
+  {
+    "title": "New Post 12",
+    "date": "2025-08-31",
+    "file": "new-post-12.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-12.jpg"
+  },
+  {
+    "title": "New Post 13",
+    "date": "2025-08-31",
+    "file": "new-post-13.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-13.jpg"
+  },
+  {
+    "title": "New Post 14",
+    "date": "2025-08-31",
+    "file": "new-post-14.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-14.jpg"
+  },
+  {
+    "title": "New Post 15",
+    "date": "2025-08-31",
+    "file": "new-post-15.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-15.jpg"
+  },
+  {
+    "title": "New Post 16",
+    "date": "2025-08-31",
+    "file": "new-post-16.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-16.jpg"
+  },
+  {
+    "title": "New Post 17",
+    "date": "2025-08-31",
+    "file": "new-post-17.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-17.jpg"
+  },
+  {
+    "title": "New Post 18",
+    "date": "2025-08-31",
+    "file": "new-post-18.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-18.jpg"
+  },
+  {
+    "title": "New Post 19",
+    "date": "2025-08-31",
+    "file": "new-post-19.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-19.jpg"
+  },
+  {
+    "title": "New Post 20",
+    "date": "2025-08-31",
+    "file": "new-post-20.html",
+    "excerpt": "Short summary or excerpt of the new post...",
+    "image": "posts/images/new-post-20.jpg"
   }
 ]
