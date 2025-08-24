@@ -6,13 +6,16 @@
   <title>Summer - Parchment</title>
  <link rel="stylesheet" href="../style.css">
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
   <header>
-    <h1>Summer</h1>
-    <nav><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></nav>
+    <h1>Parchment</h1>
+    <nav>
+      <!-- Back link dynamically updated via JS -->
+      <a id="back-link" href="../index.html">← Back to Page</a>
+    </nav>
   </header>
 
   <main>
@@ -34,28 +37,39 @@
       turpis eu nibh fermentum ornare. Donec sagittis lacus semper odio efficitur, sit amet iaculis velit fermentum. Nam vel interdum erat. Vestibulum efficitur 
       sagittis tellus, a ultrices sem efficitur id. Quisque interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
-    
- <p><a href="../index.html?page={{PAGE}}">← Back to Page {{PAGE}}</a></p>
+
+    <!-- Another back link at bottom of post -->
+    <p><a id="back-link-bottom" class="back-link" href="../index.html">← Back to Page</a></p>
   </main>
 
   <footer>
     <p>
       <a href="../about.html">About Me</a> |
-
-      <!-- Social icons wrapped -->
       <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-flickr"></i>
-        </a>
+        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
       </span>
     </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <!-- JS to read ?page= parameter and update back links dynamically -->
+  <script>
+    // ===========================
+    // Get page number from URL query string
+    // ===========================
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page') || 1;
+
+    // ===========================
+    // Update all back links to include current page
+    // ===========================
+    const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
+    backLinks.forEach(link => {
+      link.href = `../index.html?page=${page}`;
+      link.textContent = `← Back to Page ${page}`;
+    });
+  </script>
 </body>
 </html>
