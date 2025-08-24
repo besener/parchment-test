@@ -173,3 +173,19 @@ article p {
   opacity: 0.5;                             /* Grey out disabled buttons */
   cursor: default;
 }
+
+/* ==============================
+   Back to Page Link Styling
+   ============================== */
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.back-link:hover {
+  color: #5f6db3;
+  text-decoration: underline;
+}
