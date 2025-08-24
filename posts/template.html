@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{TITLE}} - Parchment</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
     <h1>Parchment</h1>
-    <nav><a href="../index.html">Home</a></nav>
+    <nav><a id="back-link" href="../index.html">← Back</a></nav>
   </header>
 
   <main>
@@ -25,7 +26,20 @@
   </main>
 
   <footer>
+    <p>
+      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+    </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <script>
+    // Preserve back-link page number
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('page') || 1;
+    document.getElementById('back-link').href = `../index.html?page=${page}`;
+  </script>
 </body>
 </html>
+
