@@ -1,30 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Parchment - Parchment</title>
-  <link rel="stylesheet" href="../style.css">
-
-  <!-- Font Awesome for social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Parchment</h1>
-    <nav>
-      <!-- Back link updated dynamically via JS -->
-      <a id="back-link" href="#">← Back to Page</a>
-    </nav>
-  </header>
-
-  <!-- Main content -->
-  <main>
-    <div class="post-featured-post">
-      <img src="images/welcome.jpg" alt="Welcome to My Parchment">
-    </div>
-
     <article>
       <h2>Welcome to My Parchment</h2>
       <p><em>August 21, 2025</em></p>
@@ -40,53 +16,5 @@
       semper odio efficitur, sit amet iaculis velit fermentum. Nam vel interdum erat. Vestibulum efficitur sagittis tellus, a ultrices sem efficitur id. Quisque 
       interdum elit sit amet augue vehicula commodo. Vestibulum venenatis semper nisi, vitae posuere mi.</p>
     </article>
-
-    <!-- Bottom back link -->
-    <p><a id="back-link-bottom" href="#" class="back-link">← Back to Page</a></p>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>
-      <a href="../about.html">About Me</a> |
-      <span class="social-icons">
-        <a href="https://github.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="https://flickr.com/username" target="_blank" rel="noopener noreferrer"><i class="fab fa-flickr"></i></a>
-      </span>
-    </p>
-    <p>© 2025 Parchment</p>
-  </footer>
-
-  <!-- Script to dynamically set correct back page -->
-  <script>
-    const POSTS_PER_PAGE = 5;
-
-    // Get current file name dynamically
-    const currentFile = window.location.pathname.split('/').pop();
-
-    fetch("../posts.json")
-      .then(res => res.json())
-      .then(posts => {
-        // Sort posts newest first
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        // Find index of this post
-        const postIndex = posts.findIndex(p => p.file === currentFile);
-
-        if(postIndex === -1) return; // fail silently if not found
-
-        const pageNum = Math.floor(postIndex / POSTS_PER_PAGE) + 1;
-        const backLink = `../index.html?page=${pageNum}`;
-
-        // Update both top and bottom back links
-        document.getElementById('back-link').href = backLink;
-        document.getElementById('back-link').textContent = `← Back to Page ${pageNum}`;
-
-        document.getElementById('back-link-bottom').href = backLink;
-        document.getElementById('back-link-bottom').textContent = `← Back to Page ${pageNum}`;
-      })
-      .catch(err => console.error("Failed to update back link:", err));
-  </script>
 </body>
 </html>
