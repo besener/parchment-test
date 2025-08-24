@@ -1,26 +1,27 @@
+<!-- Use template.html as base, replace {{TITLE}}, {{DATE}}, {{IMAGE}}, {{CONTENT}} -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Summer</title>
+  <title>Welcome to My Parchment - Parchment</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="https://kit.fontawesome.com/YOUR_KIT_ID.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <h1>Parchment</h1>
-    <nav><a href="../index.html">Home</a></nav>
+    <h1>Summer</h1>
+    <nav><a id="back-link" href="../index.html">← Back</a></nav>
   </header>
 
   <main>
-    <!-- Featured Image -->
     <div class="post-featured-post">
       <img src="images/summer.jpg" alt="Summer">
     </div>
 
     <article>
       <h2>Summer</h2>
-      <p><em>August 22, 2025</em></p>
+      <p><em>August 23, 2025</em></p>
 
       <p>Lorem ipsum dolor sit amet, <a href="https://github.com/besener/parchment-test/edit/main/posts/summer.html" target="_blank" rel="noopener noreferrer">consectetur adipiscing elit</a>. Mauris convallis 
       eros ut velit lacinia convallis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean et velit sit amet mi tristique 
@@ -35,8 +36,19 @@
   </main>
 
   <footer>
+    <p>
+      <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://flickr.com/username" target="_blank"><i class="fab fa-flickr"></i></a>
+    </p>
     <p>© 2025 Parchment</p>
   </footer>
+
+  <script>
+    // Back-link to correct index page
+    const params = new URLSearchParams(window.location.search);
+    const page = params.get('page') || 1;
+    document.getElementById('back-link').href = `../index.html?page=${page}`;
+  </script>
 </body>
 </html>
-
