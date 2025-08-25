@@ -74,40 +74,41 @@
   </footer>
 
   <!-- ===========================
-       JavaScript Section
-       =========================== -->
-  <script>
-    // ===========================
-    // 1. Read page number from URL
-    // ===========================
-    const urlParams = new URLSearchParams(window.location.search);
-    const page = urlParams.get('page') || document.body.dataset.page || 1;
+     JavaScript Section
+     =========================== -->
+<script>
+  // ===========================
+  // 1. Get the page number from URL query string
+  // ===========================
+  const urlParams = new URLSearchParams(window.location.search);
+  const page = urlParams.get('page') || 1;
 
-    // ===========================
-    // 2. Update all back links dynamically
-    // ===========================
-    const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
-    backLinks.forEach(link => {
-      link.href = `../index.html?page=${page}`;
-      link.textContent = `← Back to Page ${page}`;
+  // ===========================
+  // 2. Update all back links dynamically
+  // ===========================
+  const backLinks = document.querySelectorAll('#back-link, #back-link-bottom');
+  backLinks.forEach(link => {
+    link.href = `../index.html?page=${page}`;
+    link.textContent = `← Back to Page ${page}`;
+  });
+
+  // ===========================
+  // 3. Display post date correctly
+  //    Use year, month, day to avoid timezone shifts
+  // ===========================
+  const datePlaceholder = '{{DATE}}'; // e.g., "2025-08-20"
+
+  if (datePlaceholder) {
+    const [year, month, day] = datePlaceholder.split('-').map(Number);
+    const dateObj = new Date(year, month - 1, day); // month is 0-indexed
+    const formattedDate = dateObj.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
 
-    // ===========================
-    // 3. Display date safely (timezone-agnostic)
-    // ===========================
-    const postDateStr = '{{DATE}}'; // Format: YYYY-MM-DD
-    if(postDateStr) {
-      const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // JS months are 0-indexed
-      const postDateEl = document.getElementById('post-date');
-      if(postDateEl){
-        postDateEl.textContent = dateObj.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-      }
-    }
-  </script>
-</body>
-</html>
+    // Update the <em> element inside the article
+    const dateEl = document.querySelector('article em');
+    if (dateEl) dateEl.textContent = formattedDate;
+  }
+</script>
