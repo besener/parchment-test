@@ -77,19 +77,17 @@
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // ===========================
-    // 3. Display date safely (timezone-agnostic)
-    // ===========================
-    const postDateStr = '{{DATE}}'; // Format: YYYY-MM-DD
-    if(postDateStr) {
+    // --------------------------
+    // 3. Timezone-safe date display
+    // --------------------------
+    const postDateStr = '{{DATE}}';
+    if(postDateStr){
       const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // JS months are 0-indexed
+      const dateObj = new Date(year, month-1, day); // Month 0-indexed
       const postDateEl = document.getElementById('post-date');
       if(postDateEl){
-        postDateEl.textContent = dateObj.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+        postDateEl.textContent = dateObj.toLocaleDateString('en-US',{
+          year:'numeric', month:'long', day:'numeric'
         });
       }
     }
