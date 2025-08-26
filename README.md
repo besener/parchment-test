@@ -1,6 +1,8 @@
 # parchment-test
 Testing codes for parchment blog
 
+---
+
 # 📝 Parchment Blog
 
 A personal blog about ** life in/outside academia**.  
@@ -83,6 +85,8 @@ Footer links include:
 
 ```
 3. The homepage automatically lists the new post.
+
+---
 
 📜 License: There is no license. Made with ❤️. 
 
