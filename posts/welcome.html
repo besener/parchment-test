@@ -9,7 +9,7 @@
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body>
+<body data-page="{{PAGE}}">
   <!-- ===========================
        Header Section
        =========================== -->
@@ -75,10 +75,11 @@
 
   <!-- ===========================
        JavaScript Section
+       Dynamic back links + safe date display
        =========================== -->
   <script>
     // ===========================
-    // 1. Read page number from URL
+    // 1. Get page number from URL or body dataset
     // ===========================
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('page') || document.body.dataset.page || 1;
@@ -92,17 +93,23 @@
       link.textContent = `← Back to Page ${page}`;
     });
 
-    // --------------------------
+    // ===========================
     // 3. Timezone-safe date display
-    // --------------------------
-    const postDateStr = '{{DATE}}';
-    if(postDateStr){
-      const [year, month, day] = postDateStr.split('-').map(Number);
-      const dateObj = new Date(year, month-1, day); // Month 0-indexed
-      const postDateEl = document.getElementById('post-date');
-      if(postDateEl){
-        postDateEl.textContent = dateObj.toLocaleDateString('en-US',{
-          year:'numeric', month:'long', day:'numeric'
+    // ===========================
+    const postDateEl = document.getElementById('post-date');
+    if(postDateEl){
+      const isoDateStr = postDateEl.textContent.trim(); // e.g., "2025-08-20"
+
+      // Only process if the date looks valid
+      if (/^\d{4}-\d{2}-\d{2}$/.test(isoDateStr)) {
+        // Add T00:00:00 to force UTC parsing (prevents timezone shifts)
+        const dateObj = new Date(isoDateStr + "T00:00:00");
+
+        // Format nicely for display
+        postDateEl.textContent = dateObj.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
         });
       }
     }
