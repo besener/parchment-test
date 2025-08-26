@@ -84,9 +84,7 @@ Footer links include:
 ```
 3. The homepage automatically lists the new post.
 
-📜 License
-There is no license. Made with ❤️. 
+📜 License: There is no license. Made with ❤️. 
 
-🎨 Credits
-Font Awesome 6.5.2 – https://fontawesome.com
+🎨 Social Icon Credits: Font Awesome 6.5.2 – https://fontawesome.com
 
