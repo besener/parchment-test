@@ -86,5 +86,9 @@ Footer links include:
 
 📜 License: There is no license. Made with ❤️. 
 
+---
+
 🎨 Social Icon Credits: Font Awesome 6.5.2 – https://fontawesome.com
+
+---
 
